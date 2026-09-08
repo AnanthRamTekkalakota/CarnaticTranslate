@@ -31,7 +31,7 @@
 <body>
 
 <h1>Privacy Policy</h1>
-<p class="updated">CarnaticTranslate &middot; Last updated: 13 July 2026</p>
+<p class="updated">CarnaticTranslate &middot; Last updated: 8 September 2026</p>
 
 <p>
 This Privacy Policy explains how CarnaticTranslate ("the app," "we," "us") handles your
@@ -43,25 +43,27 @@ into editable, exportable documents.
 <h2>The short version</h2>
 <p>
 CarnaticTranslate does not require an account, does not collect personal information for
-our own use, and stores your documents locally on your device. The only data that leaves
-your device is the image you choose to scan, which is sent to a third-party AI provider
-solely to transcribe it. That's it.
+our own use, and stores your documents locally on your device unless you choose to turn on
+iCloud sync. When you start a scan, the image is sent through a proxy server we operate to
+the selected third-party AI provider. The proxy does not store the image. We log limited
+request metadata, but never images, prompts, or content.
 </p>
 
-<h2>Information we do <em>not</em> collect</h2>
+<h2>Information we collect</h2>
 <p>
 We do not require you to create an account or sign in. We do not collect your name, email
 address, contacts, location, advertising identifiers, or analytics about how you use the
-app. We have no servers that store your content.
+app. For scan requests, we log limited metadata: request counts, the model used, token counts,
+and timing information. We never log or store your images, prompts, or content.
 </p>
 
-<h2>Images you scan (third-party AI processing)</h2>
+<h2>Images you scan (proxy and third-party AI processing)</h2>
 <p>
-To transcribe a music sheet, the app sends the image you capture or select to a third-party
-artificial-intelligence provider &mdash; either <strong>Google (Gemini API)</strong> or
-<strong>OpenAI</strong>, depending on the model selected for that scan. The provider processes
-the image and returns the transcribed notation. This transmission happens only when you start
-a scan.
+When you start a scan, the app sends the image you capture or select through a proxy server
+we operate. The proxy forwards the request to a third-party artificial-intelligence provider
+&mdash; either <strong>Google (Gemini API)</strong> or <strong>OpenAI</strong>, depending on the
+model selected for that scan &mdash; and returns the transcription to the app. The proxy does
+not store your image, prompt, or content. It logs only the request metadata described above.
 </p>
 <p>
 Your use of these providers is governed by their own privacy policies:
@@ -70,28 +72,21 @@ Your use of these providers is governed by their own privacy policies:
   <li><a href="https://ai.google.dev/gemini-api/terms" rel="noopener">Google Gemini API Terms &amp; Privacy</a></li>
   <li><a href="https://openai.com/policies/privacy-policy" rel="noopener">OpenAI Privacy Policy</a></li>
 </ul>
-<p>
-<strong>Important distinction:</strong> When a scan uses the app's built-in (bundled) access
-to a provider, that provider may use the submitted data to improve their services, in
-accordance with their free-tier terms. When you supply your own API key ("Bring Your Own
-Key"), your scans are governed by your own account's terms with that provider. If you are
-concerned about how your images are used, review the provider's policy above and consider
-using your own key.
-</p>
+<p>All scans use access to the AI providers supplied by the app.</p>
 
 <h2>Documents and where they are stored</h2>
 <p>
 Transcriptions you save &mdash; including the notation, any metadata you enter (such as title,
 ragam, talam, and composer), the associated page images, and generated PDFs &mdash; are stored
-<strong>locally on your device only</strong>. We do not upload, sync, or back up your documents
-to any server we control. If you delete the app, this locally stored content is removed with it.
+locally on your device. We do not upload, sync, or back up your documents to any server we
+control. If you delete the app, locally stored content may be removed with it.
 </p>
 
-<h2>API keys</h2>
+<h2>Optional iCloud sync</h2>
 <p>
-If you choose to enter your own provider API key, it is stored securely in your device's
-Keychain and is used only to authenticate your scans with that provider. We never transmit
-your key to any server we operate.
+iCloud sync is optional and off by default. If you enable it, your documents and associated
+page images sync through your own iCloud account. This data is handled by Apple under Apple's
+terms and privacy policy, and is not sent to or stored on any server we operate.
 </p>
 
 <h2>Children's privacy</h2>
