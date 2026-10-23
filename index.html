@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CarnaticTranslate — Transcribe Carnatic music sheets</title>
+<meta name="description" content="Photograph or import a Carnatic music sheet and turn it into an editable, exportable transcription. Now in TestFlight beta for iPhone and iPad.">
+<style>
+  :root {
+    color-scheme: light dark;
+    --bg: #ffffff;
+    --fg: #1a1a1a;
+    --muted: #6b6b6b;
+    --hairline: #e4e4e4;
+    --card: #f7f7f8;
+    --accent: #007AFF;
+    --mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #121212;
+      --fg: #e6e6e6;
+      --muted: #9a9a9a;
+      --hairline: #2c2c2c;
+      --card: #1c1c1e;
+      --accent: #4da3ff;
+    }
+  }
+
+  * { box-sizing: border-box; }
+
+  html { -webkit-text-size-adjust: 100%; }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    color: var(--fg);
+    background: var(--bg);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .wrap {
+    max-width: 980px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+
+  a { color: var(--accent); }
+
+  .site-nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+    min-height: 4.5rem;
+    border-bottom: 1px solid var(--hairline);
+  }
+
+  .site-nav .brand {
+    color: var(--fg);
+    font-weight: 700;
+    text-decoration: none;
+  }
+
+  .site-nav .links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: 0.4rem 1rem;
+    font-size: 0.9rem;
+  }
+
+  .site-nav .links a {
+    color: var(--muted);
+    text-decoration: none;
+  }
+
+  .site-nav .links a:hover,
+  .site-nav .links a:focus-visible,
+  .site-nav .links a[aria-current="page"] { color: var(--fg); }
+
+  /* ---------- Hero ---------- */
+
+  .hero {
+    padding: 5.5rem 0 3.5rem;
+    text-align: center;
+  }
+
+  .hero h1 {
+    font-size: clamp(2.4rem, 6vw, 3.4rem);
+    font-weight: 700;
+    letter-spacing: -0.025em;
+    line-height: 1.1;
+    margin: 0 0 1rem;
+  }
+
+  .hero .tagline {
+    font-size: clamp(1.05rem, 2.4vw, 1.3rem);
+    color: var(--muted);
+    max-width: 34rem;
+    margin: 0 auto 2rem;
+  }
+
+  .badge {
+    display: inline-block;
+    font-size: 0.78rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--muted);
+    border: 1px solid var(--hairline);
+    border-radius: 100px;
+    padding: 0.3rem 0.85rem;
+    margin-bottom: 1.75rem;
+  }
+
+  .cta {
+    display: inline-block;
+    background: var(--accent);
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.02rem;
+    font-weight: 600;
+    padding: 0.8rem 2rem;
+    border-radius: 100px;
+    transition: opacity 0.15s ease;
+  }
+
+  .cta:hover { opacity: 0.85; }
+  .cta:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+
+  .cta-note {
+    font-size: 0.85rem;
+    color: var(--muted);
+    margin-top: 0.9rem;
+  }
+
+  /* ---------- Notation motif ---------- */
+
+  .motif {
+    font-family: var(--mono);
+    font-size: 0.92rem;
+    background: var(--card);
+    border: 1px solid var(--hairline);
+    border-radius: 12px;
+    padding: 1.1rem 1.3rem;
+    max-width: 27rem;
+    margin: 0 auto 2.25rem;
+    text-align: left;
+    overflow-x: auto;
+  }
+
+  .motif .swara {
+    font-weight: 600;
+    white-space: nowrap;
+  }
+
+  .motif .sahitya {
+    color: var(--muted);
+    font-size: 0.85rem;
+    white-space: nowrap;
+  }
+
+  .motif .row + .row { margin-top: 0.55rem; }
+
+  /* ---------- Sections ---------- */
+
+  section { padding: 3.5rem 0; }
+
+  .rule { border: 0; border-top: 1px solid var(--hairline); margin: 0; }
+
+  h2 {
+    font-size: 1.55rem;
+    font-weight: 700;
+    letter-spacing: -0.015em;
+    margin: 0 0 0.6rem;
+  }
+
+  .lede {
+    color: var(--muted);
+    max-width: 38rem;
+    margin: 0 0 2rem;
+  }
+
+  /* ---------- Feature rows ---------- */
+
+  .feature {
+    display: grid;
+    grid-template-columns: 260px 1fr;
+    gap: 2.75rem;
+    align-items: center;
+  }
+
+  .feature + .feature { margin-top: 3.5rem; }
+
+  .feature.flip { grid-template-columns: 1fr 260px; }
+  .feature.flip .shot { order: 2; }
+
+  .feature h3 {
+    font-size: 1.2rem;
+    font-weight: 650;
+    margin: 0 0 0.5rem;
+  }
+
+  .feature p {
+    color: var(--muted);
+    margin: 0;
+  }
+
+  .shot img,
+  .shot video {
+    width: 100%;
+    display: block;
+    border: 1px solid var(--hairline);
+    border-radius: 22px;
+    background: #000;
+  }
+
+  /* ---------- Steps ---------- */
+
+  .steps {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    counter-reset: step;
+  }
+
+  .step h3 {
+    font-size: 1.02rem;
+    font-weight: 650;
+    margin: 0 0 0.4rem;
+  }
+
+  .step p {
+    color: var(--muted);
+    font-size: 0.94rem;
+    margin: 0;
+  }
+
+  .step::before {
+    counter-increment: step;
+    content: counter(step);
+    display: block;
+    font-family: var(--mono);
+    font-size: 0.8rem;
+    color: var(--muted);
+    padding-bottom: 0.7rem;
+    margin-bottom: 0.7rem;
+    border-bottom: 1px solid var(--hairline);
+  }
+
+  /* ---------- Footer ---------- */
+
+  footer {
+    padding: 2.5rem 0 4rem;
+    font-size: 0.88rem;
+    color: var(--muted);
+    border-top: 1px solid var(--hairline);
+  }
+
+  footer a { margin-right: 1.25rem; }
+
+  footer .built { margin-top: 1rem; }
+
+  /* ---------- Responsive ---------- */
+
+  @media (max-width: 720px) {
+    .hero { padding: 3.5rem 0 2.5rem; }
+
+    .site-nav {
+      align-items: flex-start;
+      flex-direction: column;
+      gap: 0.35rem;
+      padding: 1rem 0;
+    }
+
+    .site-nav .links { justify-content: flex-start; }
+
+    .feature,
+    .feature.flip {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+      max-width: 22rem;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .feature.flip .shot { order: 0; }
+
+    .steps { grid-template-columns: 1fr; gap: 1.75rem; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    * { transition: none !important; animation: none !important; }
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <nav class="site-nav" aria-label="Site navigation">
+    <a class="brand" href="./" aria-current="page">CarnaticTranslate</a>
+    <div class="links">
+      <a href="./privacy.html">Privacy</a>
+      <a href="./terms.html">Terms of Service</a>
+      <a href="mailto:razer323@hotmail.com">Contact</a>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <span class="badge">TestFlight beta · iPhone &amp; iPad</span>
+    <h1>CarnaticTranslate</h1>
+    <p class="tagline">
+      Photograph or import a Carnatic music sheet. Get an editable, exportable
+      transcription with swaras, sahitya, ragam, talam, and sections organized for you.
+    </p>
+
+    <div class="motif" aria-hidden="true">
+      <div class="row">
+        <div class="swara">r.gm gss. r.gm ; ;</div>
+        <div class="sahitya">Jyothi linga ka.ra</div>
+      </div>
+      <div class="row">
+        <div class="swara">r.rg s.s. r.g. m.m.</div>
+        <div class="sahitya">Ina.na ka.ra ka.la ka.ra</div>
+      </div>
+    </div>
+
+    <a class="cta" href="https://testflight.apple.com/join/XdHuceH9" target="_blank" rel="noopener noreferrer">Join the beta</a>
+    <p class="cta-note">Available through TestFlight. Requires iOS 17 or later.</p>
+  </header>
+
+  <hr class="rule">
+
+  <section>
+    <h2>Built for sheets that were never typed</h2>
+    <p class="lede">
+      Most Carnatic notation lives on handwritten paper and photocopies. CarnaticTranslate
+      reads those pages and turns them into something you can edit, search, and print.
+    </p>
+
+    <div class="feature">
+      <div class="shot">
+        <video autoplay loop muted playsinline preload="metadata" aria-label="CarnaticTranslate scan screen demonstrating page import">
+          <source src="./scan.mp4" type="video/mp4">
+          Your browser does not support embedded video.
+        </video>
+      </div>
+      <div>
+        <h3>Scan a page</h3>
+        <p>
+          Use the camera, pull a page from Photos, or import a PDF. Multi-page documents
+          are handled in one pass — and when a single file holds more than one song,
+          the app detects the split and lets you correct it before saving.
+        </p>
+      </div>
+    </div>
+
+    <div class="feature flip">
+      <div>
+        <h3>Edit any cell</h3>
+        <p>
+          Transcription is a starting point, not a verdict. Tap any cell to correct the
+          swara or the sahitya, with a dedicated key row for the notation marks that
+          aren't on a standard keyboard. Copy, paste, and move cells to restructure a line.
+        </p>
+      </div>
+      <div class="shot">
+        <img src="./edit-cell.png" width="1179" height="2556" loading="lazy" decoding="async" alt="Editing a cell in CarnaticTranslate, showing swara and sahitya fields with a custom notation keyboard row">
+      </div>
+    </div>
+
+    <div class="feature">
+      <div class="shot">
+        <img src="./document.png" width="1179" height="2556" loading="lazy" decoding="async" alt="A finished CarnaticTranslate document rendered as a printable PDF with pallavi and charanam sections">
+      </div>
+      <div>
+        <h3>Export a clean PDF</h3>
+        <p>
+          Every document renders to a print-ready PDF with proportional columns, section
+          headings, and repeat markers where they belong. Share it, print it, or export
+          the whole document as a file that opens back up in the app.
+        </p>
+      </div>
+    </div>
+
+    <div class="feature flip">
+      <div>
+        <h3>Keep your library with you</h3>
+        <p>
+          Saved documents stay on your device by default. If you enable optional iCloud
+          sync, your documents and page images move through your own iCloud account so
+          you can continue on another device.
+        </p>
+      </div>
+      <div class="shot">
+        <img src="./documents.png" width="1179" height="2556" loading="lazy" decoding="async" alt="The CarnaticTranslate document library listing saved songs with ragam and talam">
+      </div>
+    </div>
+  </section>
+
+  <hr class="rule">
+
+  <section>
+    <h2>How it works</h2>
+    <p class="lede">Three steps, start to finish.</p>
+
+    <div class="steps">
+      <div class="step">
+        <h3>Capture</h3>
+        <p>Photograph the sheet or import an existing image or PDF.</p>
+      </div>
+      <div class="step">
+        <h3>Transcribe</h3>
+        <p>An AI vision model reads the page and returns structured notation — swaras and sahitya aligned, ragam and talam identified.</p>
+      </div>
+      <div class="step">
+        <h3>Refine and export</h3>
+        <p>Fix anything the model got wrong, then save, print, or share.</p>
+      </div>
+    </div>
+  </section>
+
+  <hr class="rule">
+
+  <section>
+    <h2>Support</h2>
+    <p class="lede">
+      Questions, bugs, or feature requests during the beta — email
+      <a href="mailto:razer323@hotmail.com">razer323@hotmail.com</a> and I'll get back to you.
+    </p>
+    <p class="lede">
+      Transcriptions are generated by AI and can contain errors. Always check the output
+      against your original sheet before relying on it.
+    </p>
+  </section>
+
+  <footer>
+    <a href="./privacy.html">Privacy Policy</a>
+    <a href="./terms.html">Terms of Service</a>
+    <a href="mailto:razer323@hotmail.com">Contact</a>
+    <p class="built">Built by Ananth Ram Tekkalakota.</p>
+  </footer>
+
+</div>
+
+</body>
+</html>
