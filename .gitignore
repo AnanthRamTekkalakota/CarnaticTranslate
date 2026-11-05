@@ -1,0 +1,19 @@
+# Private review evidence and local/generated artifacts
+.release-review/
+.DS_Store
+__pycache__/
+*.py[cod]
+.venv/
+node_modules/
+_site/
+.jekyll-cache/
+.sass-cache/
+
+# Local credentials/configuration
+.env
+.env.*
+.dev.vars
+.dev.vars.*
+*.p8
+*.pem
+*.key
