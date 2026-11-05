@@ -1,121 +1,186 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>CarnaticTranslate — Terms of Service</title>
-<style>
-  :root { color-scheme: light dark; }
-  body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    line-height: 1.6;
-    max-width: 720px;
-    margin: 0 auto;
-    padding: 2rem 1.25rem 4rem;
-    color: #1a1a1a;
-    background: #ffffff;
-  }
-  @media (prefers-color-scheme: dark) {
-    body { color: #e6e6e6; background: #121212; }
-    a { color: #4da3ff; }
-  }
-  h1 { font-size: 1.8rem; margin-bottom: 0.25rem; }
-  h2 { font-size: 1.2rem; margin-top: 2rem; }
-  .updated { color: #888; font-size: 0.9rem; margin-top: 0; }
-  a { color: #007AFF; }
-  footer { margin-top: 3rem; font-size: 0.85rem; color: #888; }
-  footer a { margin-right: 1.25rem; }
-</style>
-</head>
-<body>
-
-<h1>Terms of Service</h1>
-<p class="updated">CarnaticTranslate &middot; Last updated: 26 October 2026</p>
-
-<p>
-These Terms of Service ("Terms") govern your use of CarnaticTranslate ("the app"), developed
-and operated by Ananth Ram Tekkalakota. By using the app, you agree to these Terms. If you do
-not agree, please do not use the app.
-</p>
-
-<h2>1. What the app does</h2>
-<p>
-CarnaticTranslate lets you photograph or import Carnatic music notation sheets and uses
-third-party AI services to transcribe them into editable, exportable documents. You are
-responsible for the content you scan and for having the right to use it.
-</p>
-
-<h2>2. Acceptable use</h2>
-<p>You agree not to use the app to:</p>
-<ul>
-  <li>Upload or process content you do not have the legal right to use;</li>
-  <li>Violate any applicable law or the terms of the underlying AI providers;</li>
-  <li>Attempt to disrupt, reverse-engineer, or abuse the app, its proxy server, or its
-      associated services;</li>
-  <li>Use the app's scan access in a manner intended to consume excessive resources.</li>
-</ul>
-
-<h2>3. AI accuracy &mdash; no guarantee</h2>
-<p>
-Transcriptions are produced by artificial-intelligence models and <strong>may contain
-errors, omissions, or inaccuracies</strong>. The app is a tool to assist transcription, not
-an authoritative source. You must review and verify all output against the original material
-before relying on it. We make no representation that any transcription is accurate or complete.
-</p>
-
-<h2>4. Third-party services</h2>
-<p>
-All scans use access supplied by the app. Scan requests pass through a proxy server we operate,
-which forwards them to a third-party AI provider (Google Gemini or OpenAI). The proxy does not
-store images, prompts, or content. We log limited request metadata, including request counts,
-the model used, token counts, and timing information. Your use of those services through the
-app is also subject to their respective terms and privacy policies. We are not responsible for
-the availability, accuracy, or conduct of those third-party services.
-</p>
-
-<h2>5. Your content</h2>
-<p>
-You retain all rights to the images and documents you create. Documents are stored locally on
-your device. You may optionally enable iCloud sync, which is off by default. When enabled, your
-documents and page images sync through your own iCloud account under Apple's terms and are not
-sent to or stored on any server we operate. You are responsible for backing up any content you
-wish to keep; uninstalling the app may remove locally stored data.
-</p>
-
-<h2>6. Disclaimer of warranties</h2>
-<p>
-The app is provided "as is" and "as available," without warranties of any kind, express or
-implied, including but not limited to merchantability, fitness for a particular purpose, and
-non-infringement. We do not warrant that the app will be uninterrupted, error-free, or secure.
-</p>
-
-<h2>7. Limitation of liability</h2>
-<p>
-To the maximum extent permitted by law, Ananth Ram Tekkalakota shall not be liable for any
-indirect, incidental, special, consequential, or punitive damages, or any loss of data,
-arising out of or relating to your use of the app.
-</p>
-
-<h2>8. Changes to These Terms</h2>
-<p>
-We may update these Terms to reflect changes to the service, security requirements, or applicable
-law. We will identify the effective date and provide reasonable advance notice of material changes
-where practicable. Urgent security or legal changes may take effect sooner. Where required by law,
-we will request your agreement before the revised Terms apply. Changes will not override applicable
-consumer rights or Apple's purchase and subscription terms.
-</p>
-
-<h2>9. Contact</h2>
-<p>
-Questions about these Terms:
-<br>Ananth Ram Tekkalakota
-<br><a href="mailto:razer323@hotmail.com">razer323@hotmail.com</a>
-</p>
-
-<footer>
-  <a href="./">Home</a>
-  <a href="./privacy.html">Privacy Policy</a>
-</footer>
-
-</body>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>CarnaticTranslate — Terms of Service</title>
+    <link rel="stylesheet" href="./site.css">
+    <link rel="icon" href="./favicon.svg" type="image/svg+xml">
+    <meta name="description" content="CarnaticTranslate service eligibility, page allowances, Apple subscriptions, content rights and AI transcription responsibilities.">
+    <meta name="theme-color" content="#075ac9">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="CarnaticTranslate — Terms of Service">
+    <meta property="og:description" content="CarnaticTranslate service eligibility, page allowances, Apple subscriptions, content rights and AI transcription responsibilities.">
+    <meta property="og:url" content="https://ananthramtekkalakota.github.io/CarnaticTranslate/terms.html">
+    <link rel="canonical" href="https://ananthramtekkalakota.github.io/CarnaticTranslate/terms.html">
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <div class="wrap">
+      <nav class="site-nav" aria-label="Main navigation"><a class="brand" href="./"><span class="brand-mark" aria-hidden="true">S</span>CarnaticTranslate</a>
+        <div class="nav-links"><a href="./#workflow">How it works</a><a href="./privacy.html">Privacy</a><a href="./terms.html" aria-current="page">Terms</a><a href="./#support">Support</a>
+        </div>
+      </nav>
+      <main id="main" tabindex="-1">
+        <header class="legal-header">
+          <p class="eyebrow">CarnaticTranslate · Release draft</p>
+          <h1>Terms of Service</h1>
+          <p class="revision">Draft revised: <time datetime="2026-11-04">4 November 2026</time> · Not yet effective</p>
+          <p class="notice">This draft describes the intended release and identifies processing that has not yet been confirmed. A publication and effective date will be set when the final policy is released.</p>
+          <p>
+            When published, these Terms of Service ("Terms") will govern your use of CarnaticTranslate ("the app"), developed
+            and operated by Ananth Ram Tekkalakota. When these Terms take effect, using the app constitutes agreement to them. If you do
+            not agree, please do not use the app.</p>
+        </header>
+        <div class="legal-layout">
+          <nav class="toc" aria-label="On this page"><strong>On this page</strong>
+            <ol>
+              <li><a href="#what-the-app-does">What the app does</a>
+              </li>
+              <li><a href="#age-eligibility">Age eligibility</a>
+              </li>
+              <li><a href="#acceptable-use">Acceptable use</a>
+              </li>
+              <li><a href="#plans-page-allowances-and-service-limits">Plans, page allowances, and service limits</a>
+              </li>
+              <li><a href="#subscriptions-and-purchases">Subscriptions and purchases</a>
+              </li>
+              <li><a href="#ai-accuracy-no-guarantee">AI accuracy &mdash; no guarantee</a>
+              </li>
+              <li><a href="#third-party-services">Third-party services</a>
+              </li>
+              <li><a href="#your-content">Your content</a>
+              </li>
+              <li><a href="#changes-suspension-and-availability">Changes, suspension, and availability</a>
+              </li>
+              <li><a href="#disclaimer-of-warranties">Disclaimer of warranties</a>
+              </li>
+              <li><a href="#limitation-of-liability">Limitation of liability</a>
+              </li>
+              <li><a href="#changes-to-these-terms">Changes to These Terms</a>
+              </li>
+              <li><a href="#contact">Contact</a>
+              </li>
+            </ol>
+          </nav>
+          <article class="legal-copy" aria-label="Terms of Service">
+            <h2 id="what-the-app-does">What the app does</h2>
+            <p>
+              CarnaticTranslate lets you photograph or import Carnatic music notation sheets and uses
+              our Worker and third-party AI services to transcribe them into editable, exportable documents.
+              The provider and model may be selected by the service configuration rather than by you. The intended release providers are Anthropic and OpenAI; production routing for that release is not yet confirmed. Existing and historical processing paths are described in the <a href="./privacy.html#ai-providers-and-routing">Privacy Policy</a>. In builds that expose a custom compatible endpoint, its operator may be someone other than OpenAI.</p>
+            <h2 id="age-eligibility">Age eligibility</h2>
+            <p>You must be <strong>at least 13 years old</strong> to use CarnaticTranslate. If you are under 18, you must have your parent or legal guardian’s permission to use the service, agree to these Terms and submit content for AI processing. If you cannot legally agree yourself, your parent or legal guardian must agree on your behalf. You must also meet local age and consent requirements; where local law requires parental authorization for consent-based processing, obtain it before submitting content.</p>
+            <p>This minimum applies to the service and is separate from Apple’s content age rating. It does not mean an age-verification or parental-consent mechanism is currently implemented. API-powered services are subject to applicable commercial agreements and safeguards, including <a href="https://www.anthropic.com/legal/commercial-terms">Anthropic’s Commercial Terms</a>, <a href="https://support.claude.com/en/articles/9307344-responsible-use-of-anthropic-s-models-guidelines-for-organizations-serving-minors">Anthropic’s guidance for organizations serving minors</a>, the <a href="https://openai.com/policies/services-agreement/">OpenAI Services Agreement</a> and <a href="https://developers.openai.com/api/docs/guides/safety-checks/under-18-api-guidance">OpenAI’s under-18 API guidance</a>.</p>
+            <h2 id="acceptable-use">Acceptable use</h2>
+            <p>You agree not to use the app to:</p>
+            <ul>
+              <li>Upload or process content you do not have the legal right to use;
+              </li>
+              <li>Violate any applicable law or the terms of the underlying AI providers;
+              </li>
+              <li>Attempt to disrupt, unlawfully reverse-engineer, or abuse the app, its proxy server, or its
+                associated services;
+              </li>
+              <li>Use the app's scan access in a manner intended to consume excessive resources.
+              </li>
+            </ul>
+            <h2 id="plans-page-allowances-and-service-limits">Plans, page allowances, and service limits</h2>
+            <p>
+              The intended allowances are 3 pages for each newly issued Free monthly anniversary period, 50 for Standard and 100 for Plus per paid monthly allowance period. Existing allowance periods retain their issued limits until expiry. Page packs are not currently offered. Available plans and their current page allowances are shown in the app. The Worker is the
+              authoritative source for your plan, allowance period, used pages, pages in progress, and remaining
+              pages. We may apply reasonable technical limits to protect the service, including request-size,
+              rate, concurrency, and processing-time limits.</p>
+            <p>
+              The service reserves a page while a scan is in progress and settles that page when it produces a
+              technically usable transcription. Each submitted page in a multi-page import is admitted and
+              accounted for individually, so partial success can settle only the pages that produce usable
+              results. A technically usable result can still contain transcription errors; page settlement is
+              not an accuracy guarantee. A terminal provider or validation failure before settlement releases
+              the plan-page reservation, although the request may still count toward technical rate limits. A
+              matching lost-response recovery within the available retrieval window returns the prior result
+              without a second provider call or page charge. Unused pages do not roll over between allowance
+              periods or grants. A paid allowance replaces the Free allowance while the paid grant is selected;
+              the two allowances do not stack.</p>
+            <h2 id="subscriptions-and-purchases">Subscriptions and purchases</h2>
+            <p>
+              When paid subscriptions are offered, purchases are made through Apple's App Store using the price, billing period, and
+              other purchase information displayed by Apple at confirmation. Subscriptions renew automatically
+              unless canceled at least 24 hours before renewal. You can manage or cancel a subscription in your
+              <a href="https://support.apple.com/en-us/118428">Apple subscription settings</a> and use Restore Purchases where available in the app.</p>
+            <p>
+              Apple processes payments and controls billing, taxes, renewal, cancellation, refunds, family or
+              account eligibility, and purchase verification under Apple's terms. Plan changes take effect when
+              Apple reports the change and the service verifies it. Canceling normally leaves paid access active
+              through the verified paid period; billing-retry or grace access, if any, depends on Apple's verified
+              subscription state and applicable law. These Terms do not replace Apple's purchase or subscription
+              terms or any non-waivable consumer rights. Deleting the app or documents, or requesting server-data deletion, does not cancel a subscription or request a refund. Restore Purchases restores eligible subscription access, not deleted server transcription results.</p>
+            <h2 id="ai-accuracy-no-guarantee">AI accuracy &mdash; no guarantee</h2>
+            <p>
+              Transcriptions are produced by artificial-intelligence models and <strong>may contain
+                errors, omissions, or inaccuracies</strong>. The app is a tool to assist transcription, not
+              an authoritative source. You must review and verify all output against the original material
+              before relying on it. We make no representation that any transcription is accurate or complete.</p>
+            <h2 id="third-party-services">Third-party services</h2>
+            <p>
+              The app depends on services provided by Cloudflare, Apple, iCloud when enabled, and one or more AI
+              providers. If you configure a custom endpoint, you are responsible for that endpoint, its security,
+              its charges, and your authority to send content to it. Third-party services may be unavailable,
+              change their terms or capabilities, reject content, or return incomplete or inaccurate results.
+              Your use of them is also subject to their applicable terms and policies. Details about content
+              processing, operational records, and retention are in our <a href="./privacy.html">Privacy Policy</a>.</p>
+            <h2 id="your-content">Your content</h2>
+            <p>
+              You retain your rights to the images and documents you provide or create. You grant us and the
+              service providers involved in a requested scan the limited rights needed to transmit, process,
+              validate, return, and recover that scan and to operate and secure the service. You represent that
+              you have the rights and permissions needed to submit the content.</p>
+            <p>
+              Saved documents and source images are kept on your device or in your iCloud account when you opt
+              in to iCloud sync. You are responsible for reviewing saved work and maintaining any additional
+              backup you require. Local files may be lost if the app or device is removed, damaged, reset, or
+              otherwise unavailable. Turning iCloud sync off leaves cloud copies in place; deleting only a local
+              copy may allow the iCloud copy to return when sync is enabled again. The app's temporary and
+              conflict-recovery features are safeguards, not a backup service or a guarantee against data loss.</p>
+            <h2 id="changes-suspension-and-availability">Changes, suspension, and availability</h2>
+            <p>
+              We may modify models, providers, plan features, technical limits, or service functionality, subject
+              to applicable law and Apple's rules for existing purchases. We may suspend or limit access needed
+              to protect the service, comply with law, address abuse, or respond to provider or platform failures.
+              We do not guarantee that scans, result recovery, sync, conflict recovery, exports, or any third-party
+              service will always be available or complete within a particular time.</p>
+            <h2 id="disclaimer-of-warranties">Disclaimer of warranties</h2>
+            <p>
+              The app is provided "as is" and "as available," without warranties of any kind, express or
+              implied, including but not limited to merchantability, fitness for a particular purpose, and
+              non-infringement. We do not warrant that the app will be uninterrupted, error-free, secure, or
+              free from data loss. Nothing in these Terms excludes a warranty or remedy that cannot lawfully
+              be excluded.</p>
+            <h2 id="limitation-of-liability">Limitation of liability</h2>
+            <p>
+              To the maximum extent permitted by law, Ananth Ram Tekkalakota shall not be liable for any
+              indirect, incidental, special, consequential, or punitive damages, or any loss of data,
+              arising out of or relating to your use of the app.</p>
+            <h2 id="changes-to-these-terms">Changes to These Terms</h2>
+            <p>
+              We may update these Terms to reflect changes to the service, security requirements, or applicable
+              law. We will identify the effective date and provide reasonable advance notice of material changes
+              where practicable. Urgent security or legal changes may take effect sooner. Where required by law,
+              we will request your agreement before the revised Terms apply. Changes will not override applicable
+              consumer rights or Apple's purchase and subscription terms.</p>
+            <h2 id="contact">Contact</h2>
+            <p>
+              Questions about these Terms:
+              <br>Ananth Ram Tekkalakota
+              <br><a href="mailto:razer323@hotmail.com">razer323@hotmail.com</a></p>
+          </article>
+        </div>
+      </main>
+      <footer class="site-footer">
+        <p>Ananth Ram Tekkalakota</p>
+        <div class="footer-links"><a href="./">Home</a><a href="./privacy.html">Privacy Policy</a><a href="./terms.html">Terms of Service</a><a href="mailto:razer323@hotmail.com">Contact</a>
+        </div>
+      </footer>
+    </div>
+  </body>
 </html>
