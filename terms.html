@@ -25,7 +25,7 @@
         <header class="legal-header">
           <p class="eyebrow">CarnaticTranslate · Release draft</p>
           <h1>Terms of Service</h1>
-          <p class="revision">Draft revised: <time datetime="2026-11-04">4 November 2026</time> · Not yet effective</p>
+          <p class="revision">Draft revised: <time datetime="2026-11-05">5 November 2026</time> · Not yet effective</p>
           <p class="notice">This draft describes the intended release and identifies processing that has not yet been confirmed. A publication and effective date will be set when the final policy is released.</p>
           <p>
             When published, these Terms of Service ("Terms") will govern your use of CarnaticTranslate ("the app"), developed
@@ -68,10 +68,10 @@
             <p>
               CarnaticTranslate lets you photograph or import Carnatic music notation sheets and uses
               our Worker and third-party AI services to transcribe them into editable, exportable documents.
-              The provider and model may be selected by the service configuration rather than by you. The intended release providers are Anthropic and OpenAI; production routing for that release is not yet confirmed. Existing and historical processing paths are described in the <a href="./privacy.html#ai-providers-and-routing">Privacy Policy</a>. In builds that expose a custom compatible endpoint, its operator may be someone other than OpenAI.</p>
+              Bundled launch transcription is planned to use Anthropic’s Claude Haiku across Free, Standard and Plus, selected by the service. Bounded retries use the same model, with no fallback to another AI provider. Production routing and account settings for that launch have not yet been confirmed. Historical processing paths are described in the <a href="./privacy.html#ai-providers-and-routing">Privacy Policy</a>.</p>
             <h2 id="age-eligibility">Age eligibility</h2>
             <p>You must be <strong>at least 13 years old</strong> to use CarnaticTranslate. If you are under 18, you must have your parent or legal guardian’s permission to use the service, agree to these Terms and submit content for AI processing. If you cannot legally agree yourself, your parent or legal guardian must agree on your behalf. You must also meet local age and consent requirements; where local law requires parental authorization for consent-based processing, obtain it before submitting content.</p>
-            <p>This minimum applies to the service and is separate from Apple’s content age rating. It does not mean an age-verification or parental-consent mechanism is currently implemented. API-powered services are subject to applicable commercial agreements and safeguards, including <a href="https://www.anthropic.com/legal/commercial-terms">Anthropic’s Commercial Terms</a>, <a href="https://support.claude.com/en/articles/9307344-responsible-use-of-anthropic-s-models-guidelines-for-organizations-serving-minors">Anthropic’s guidance for organizations serving minors</a>, the <a href="https://openai.com/policies/services-agreement/">OpenAI Services Agreement</a> and <a href="https://developers.openai.com/api/docs/guides/safety-checks/under-18-api-guidance">OpenAI’s under-18 API guidance</a>.</p>
+            <p>This minimum applies to the service and is separate from Apple’s content age rating. It does not mean an age-verification or parental-consent mechanism is currently implemented. API-powered services are subject to applicable commercial agreements and safeguards, including <a href="https://www.anthropic.com/legal/commercial-terms">Anthropic’s Commercial Terms</a> and <a href="https://support.claude.com/en/articles/9307344-responsible-use-of-anthropic-s-models-guidelines-for-organizations-serving-minors">Anthropic’s guidance for organizations serving minors</a>.</p>
             <h2 id="acceptable-use">Acceptable use</h2>
             <p>You agree not to use the app to:</p>
             <ul>
@@ -123,9 +123,8 @@
               before relying on it. We make no representation that any transcription is accurate or complete.</p>
             <h2 id="third-party-services">Third-party services</h2>
             <p>
-              The app depends on services provided by Cloudflare, Apple, iCloud when enabled, and one or more AI
-              providers. If you configure a custom endpoint, you are responsible for that endpoint, its security,
-              its charges, and your authority to send content to it. Third-party services may be unavailable,
+              The app depends on Cloudflare, Apple, iCloud when enabled, and Anthropic for planned bundled
+              launch transcription as described in the Privacy Policy. Third-party services may be unavailable,
               change their terms or capabilities, reject content, or return incomplete or inaccurate results.
               Your use of them is also subject to their applicable terms and policies. Details about content
               processing, operational records, and retention are in our <a href="./privacy.html">Privacy Policy</a>.</p>
@@ -136,6 +135,7 @@
               validate, return, and recover that scan and to operate and secure the service. You represent that
               you have the rights and permissions needed to submit the content.</p>
             <p>
+              Ending a paid plan does not delete your saved documents or remove access to them.
               Saved documents and source images are kept on your device or in your iCloud account when you opt
               in to iCloud sync. You are responsible for reviewing saved work and maintaining any additional
               backup you require. Local files may be lost if the app or device is removed, damaged, reset, or

@@ -25,7 +25,7 @@
         <header class="legal-header">
           <p class="eyebrow">CarnaticTranslate · Release draft</p>
           <h1>Privacy Policy</h1>
-          <p class="revision">Draft revised: <time datetime="2026-11-04">4 November 2026</time> · Not yet effective</p>
+          <p class="revision">Draft revised: <time datetime="2026-11-05">5 November 2026</time> · Not yet effective</p>
           <p class="notice">This draft describes the intended release and identifies processing that has not yet been confirmed. A publication and effective date will be set when the final policy is released.</p>
           <p>
             This Privacy Policy explains how CarnaticTranslate ("the app," "we," "us") handles your
@@ -83,8 +83,8 @@
             <p>
               CarnaticTranslate does not require a separate CarnaticTranslate account and does not include
               third-party advertising, analytics, or crash-reporting SDKs. A scan sends its source image and
-              transcription instructions through a Cloudflare Worker we operate to a configured AI provider,
-              with separate handling for a configured custom endpoint as described below. Saved documents and source images remain on your device or,
+              transcription instructions through a Cloudflare Worker we operate. Bundled launch processing is
+              planned to use Anthropic’s Claude Haiku across all plans. Saved documents and source images remain on your device or,
               if you opt in, in your iCloud account. The app and Worker also keep the operational, recovery,
               purchase, and security records described below.</p>
             <h2 id="source-images-and-ai-transcription">Source images and AI transcription</h2>
@@ -92,30 +92,28 @@
               For the app-supplied transcription service, each scanned page is sent to our Cloudflare Worker
               with the transcription prompt and any continuation context needed for a multi-page scan. The
               Worker validates the request, applies security and page-allowance checks, forwards the image and
-              instructions to the AI provider determined by the Worker service configuration, validates the
-              response, and returns a normalized transcription to the app. Provider handling may differ by
+              instructions to the AI provider determined by the Worker service configuration, and returns
+              the transcription response to the app. Response formats and provider handling may differ by
               provider, account, and configuration. The applicable provider terms and privacy practices govern
               that provider's processing in addition to this policy.</p>
             <p>
               The Worker buffers the request and provider response while processing the scan. Its application
               code does not deliberately write the source image, prompt, or raw provider response to Worker
-              logs or ordinary Durable Object records. A successfully validated transcription is handled
+              logs or ordinary Durable Object records. A successful scan response is handled
               separately for short-term result retrieval as described below. Cloudflare still processes the
               request as the infrastructure provider; application-code behavior alone does not establish every
               account-level, edge, support-access, or internal-retention setting at Cloudflare.</p>
-            <p>
-              In builds that expose a custom OpenAI-compatible endpoint, if you configure one, the app sends the image, instructions,
-              and your endpoint credential directly to that endpoint instead of using our Worker. The custom
-              operator's terms and privacy practices apply, and we do not control them. OpenAI-compatible describes an API format; it does not establish that OpenAI operates the endpoint.</p>
             <h2 id="ai-providers-and-routing">AI providers and routing</h2>
-            <p><strong>Intended release:</strong> Anthropic and OpenAI are the intended AI processors for bundled transcription through Cloudflare. The service determines routing; this is not a promise that a scan goes to both providers, that you can choose a provider, or that providers differ by plan. Production routing for this intended release has not yet been confirmed.</p>
-            <p><strong>Established implementation:</strong> the locally prepared automatic route selects Anthropic and permits at most one retry of the same model, with no automatic fallback to OpenAI or Google. Explicit OpenAI routes exist in the Worker but are disabled by its checked-in explicit-selection setting. An OpenAI code path alone does not establish that OpenAI is currently enabled in production.</p>
-            <p><strong>Earlier builds and other paths:</strong> earlier configurations supported Google’s Gemini API, and legacy Gemini routes remain in the source. Google is excluded from the intended release. Content submitted through an earlier Google route was subject to <a href="https://ai.google.dev/gemini-api/terms">Google’s Gemini API terms and data-use provisions</a>; a change in release providers does not erase earlier provider-held copies. A custom endpoint, where exposed, is a separate direct route governed by its operator’s practices.</p>
+            <p><strong>Planned bundled launch:</strong> Free, Standard and Plus use Anthropic’s Claude Haiku through our Cloudflare service. The service selects the model. A request may have at most one bounded retry of the same model, within the existing processing limits; it does not fall back to another AI provider. Interrupted-response recovery is separate, as described below.</p>
+            <p><strong>Verification status:</strong> this is the intended launch scope, not confirmation of current production routing or account settings. The prepared automatic route selects Anthropic with a bounded same-model retry; the actual release app and effective production configuration still require verification.</p>
+            <p><strong>Historical providers:</strong> earlier app or service configurations supported OpenAI and Google’s Gemini API. If an earlier request used one of those paths, its processing was subject to that provider’s applicable terms and data practices. See <a href="https://developers.openai.com/api/docs/guides/your-data">OpenAI’s API data controls</a>, its <a href="https://openai.com/policies/services-agreement/">Services Agreement</a>, and <a href="https://ai.google.dev/gemini-api/terms">Google’s Gemini API terms and data-use provisions</a>. A change in launch provider does not erase earlier provider-held copies.</p>
+            <p><strong>Earlier custom-endpoint support:</strong> where you configured a custom endpoint in an earlier build, the app sent the image, instructions and endpoint credential directly to that operator instead of our Worker. That operator’s terms and privacy practices applied. An OpenAI-compatible API format does not establish that OpenAI operated the endpoint. This historical disclosure does not offer custom endpoints as a launch feature.</p>
             <h2 id="short-term-worker-result-retrieval">Short-term Worker result retrieval</h2>
             <p>
-              To recover a successful scan when a response is lost, the Worker stores the normalized
-              transcription response and served-model value as application-encrypted ciphertext. A matching
-              request from the same pseudonymous owner, operation, and input may retrieve that result for up
+              To recover a scan response when delivery is interrupted, the Worker stores the response
+              returned to the app and its served-model value as application-encrypted ciphertext. Depending
+              on the provider path, this response may include provider-format metadata, such as token usage.
+              A matching request from the same pseudonymous owner, operation, and input may retrieve that result for up
               to 15 minutes without another provider call or page charge. The Worker does not place the source
               image or prompt in this recovery ciphertext.</p>
             <p>
@@ -154,14 +152,12 @@
               account settings and plan determine how long Workers Logs remain available and whether any
               account-level export exists; no log export is configured in the application source.</p>
             <h2 id="ai-provider-use-and-retention">AI-provider use and retention</h2>
-            <p>Provider handling is separate from our Worker storage. The following are published API/commercial defaults, not confirmation of the arrangements or controls on the accounts used by CarnaticTranslate.</p>
+            <p>Provider handling is separate from our Worker storage. The following are Anthropic’s published API/commercial defaults, not confirmation of the arrangements or controls on the account used by CarnaticTranslate.</p>
             <ul>
               <li><strong>Anthropic:</strong> its commercial guidance says submitted content is not used for model training by default; explicit sharing or feedback may permit training. Its standard API retention policy provides deletion of inputs and outputs within 30 days, with exceptions for agreed terms, features with longer retention, safety enforcement and law. Covered models can have separate retention and review requirements. See <a href="https://privacy.claude.com/en/articles/7996885-how-do-you-use-personal-data-in-model-training">commercial training practices</a>, <a href="https://privacy.claude.com/en/articles/7996866-how-long-do-you-store-my-organization-s-data">API retention and exceptions</a>, <a href="https://platform.claude.com/docs/en/manage-claude/api-and-data-retention">API retention controls</a> and <a href="https://www.anthropic.com/legal/commercial-terms">Commercial Terms</a>.
               </li>
-              <li><strong>OpenAI:</strong> its API documentation says API data is not used to train models unless the customer opts in. Default abuse-monitoring logs can include prompts and responses and are retained for up to 30 days, with longer retention possible for legal or safety reasons. Some API features separately retain application state; endpoint, feature and storage settings matter. See <a href="https://developers.openai.com/api/docs/guides/your-data">API data controls and endpoint retention</a> and the <a href="https://openai.com/policies/services-agreement/">Services Agreement</a>.
-              </li>
             </ul>
-            <p>Account-specific contracts, workspace settings, voluntary data sharing, retention exceptions and access arrangements for the intended release have not been confirmed. We do not promise zero data retention, account-specific training settings, or different privacy treatment for Free and paid plans. Consumer chatbot settings do not establish API data handling. A custom operator may have different practices even when its endpoint accepts OpenAI-compatible requests.</p>
+            <p>Account-specific contracts, workspace settings, voluntary data sharing, retention exceptions and access arrangements for the intended release have not been confirmed. We do not promise zero data retention, account-specific training settings, or different privacy treatment for Free and paid plans. Consumer chatbot settings do not establish API data handling. Historical provider and custom-operator handling is separate from the bundled launch processing described above.</p>
             <h2 id="saved-documents-and-source-images">Saved documents and source images</h2>
             <p>
               Saved documents contain the transcription, metadata you enter (such as title, ragam, talam,
@@ -243,7 +239,7 @@
               and failed deletions retain lifecycle metadata so they can be retried later.</p>
             <h2 id="credentials">Credentials</h2>
             <p>
-              Custom-provider and bring-your-own-key credentials, the active background-job credential, and the
+              Provider credentials retained from earlier custom-provider or bring-your-own-key settings, the active background-job credential, and the
               stable device UUID are stored in Apple Keychain with after-first-unlock accessibility so background
               recovery can operate after the device has been unlocked once. The app migrates the former plaintext
               custom-provider key from preferences to Keychain and removes the preference only after the Keychain
