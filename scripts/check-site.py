@@ -18,7 +18,10 @@ class Page(HTMLParser):
         attrs = dict(attrs)
         self.tags[tag] += 1
         if tag == 'html': assert attrs.get('lang') == 'en', self.name
-        if tag == 'img': assert attrs.get('alt'), f'{self.name}: missing image alt'
+        if tag == 'img':
+            assert 'alt' in attrs, f'{self.name}: missing image alt'
+            if not attrs['alt']:
+                assert attrs.get('aria-hidden') == 'true', f'{self.name}: unlabeled image is not decorative'
         if tag == 'video':
             assert 'controls' in attrs and 'autoplay' not in attrs, self.name
             assert attrs.get('aria-label'), self.name
