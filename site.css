@@ -1,3 +1,9 @@
+@font-face {
+  font-family: "Carnatic Preview Telugu";
+  src: url("./assets/fonts/carnatic-preview-telugu.woff") format("woff");
+  font-weight: 500;
+  font-display: swap;
+}
 :root {
   color-scheme: light dark;
   --bg: #fbfcff;
@@ -160,29 +166,29 @@ p {
 .small {
   font-size: .88rem;
 }
-.hero-art {
+.hero-art,.feature-media {
   margin: 0;
-  padding: 2.2rem 2.2rem 1.4rem;
-  border: 1px solid var(--line);
-  border-radius: 30px;
-  background: var(--soft);
+  justify-self: center;
+  width: min(100%, 250px);
+}
+.hero-art {
+  width: min(100%, 262px);
 }
 .hero-art .phone {
-  width: min(100%,252px);
-  margin: auto;
-  box-shadow: 0 22px 45px #132b4b26;
+  box-shadow: 0 0 0 1px var(--line), 0 14px 28px #132b4b26;
 }
-.phone {
+.phone,.tablet {
   display: block;
   width: 100%;
   height: auto;
-  border: 1px solid #353535;
-  border-radius: 26px;
+  border: 5px solid var(--soft);
+  border-radius: 28px;
   background: #1c1c1e;
+  box-shadow: 0 0 0 1px var(--line);
 }
 figcaption {
   font-size: .78rem;
-  margin-top: 1rem;
+  margin-top: .6rem;
   text-align: center;
 }
 .motif {
@@ -203,6 +209,176 @@ figcaption {
 }
 .section-head {
   margin-bottom: 2.7rem;
+}
+.transliteration-panel {
+  display: grid;
+  grid-template-columns: minmax(0,.8fr) minmax(0,1.2fr);
+  align-items: center;
+  gap: clamp(1.25rem,4vw,3rem);
+  padding: clamp(1rem,4vw,3rem);
+  border: 1px solid var(--line);
+  border-radius: 28px;
+  background: radial-gradient(ellipse at 85% 0%, #85b9ff55, transparent 75%), var(--soft);
+}
+.transliteration-panel h2 {
+  margin: 0 0 .75rem;
+}
+.transliteration-panel p {
+  margin-bottom: 0;
+}
+.sample-card {
+  min-width: 0;
+  padding: clamp(.75rem,2.4vw,1.5rem);
+  border: 1px solid var(--line);
+  border-radius: 22px;
+  background: var(--card);
+  background: color-mix(in srgb, var(--card) 75%, transparent);
+  backdrop-filter: blur(16px);
+  box-shadow: inset 0 1px 0 #ffffff40, 0 10px 28px #132b4b18;
+}
+.sample-script:not([hidden]) {
+  display: inline-flex;
+  gap: .25rem;
+  margin: 0 0 1rem;
+  padding: .25rem;
+  border: 1px solid var(--line);
+  border-radius: 100px;
+  background: var(--soft);
+}
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+.sample-script label {
+  display: grid;
+  min-height: 44px;
+  min-width: 74px;
+  padding: .35rem .75rem;
+  place-items: center;
+  border-radius: 100px;
+  color: var(--fg);
+  font-size: .9rem;
+  font-weight: 650;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+.sample-script input:checked + label {
+  background: var(--card);
+  color: var(--accent);
+  box-shadow: 0 0 0 1px var(--line), 0 2px 6px #132b4b24;
+}
+.sample-script input:focus-visible + label {
+  outline: 3px solid var(--accent);
+  outline-offset: 1px;
+}
+.sample-notation {
+  width: 100%;
+  border-spacing: .25rem;
+  table-layout: fixed;
+}
+.sample-notation caption,.sample-key {
+  color: var(--muted);
+  text-align: left;
+  font-size: .875rem;
+}
+.sample-notation caption {
+  padding-bottom: .4rem;
+}
+.sample-notation th,.sample-notation td {
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: var(--card);
+  padding: .5rem .25rem;
+}
+.sample-notation th {
+  width: clamp(4rem,9vw,5.75rem);
+  padding-inline: clamp(.3rem,1.2vw,.8rem);
+  font-size: .875rem;
+  text-align: left;
+  color: var(--muted);
+}
+.sample-notation td {
+  text-align: center;
+  font-weight: 650;
+  font-size: clamp(1rem,2vw,1.2rem);
+  white-space: pre-wrap;
+}
+.sample-notation [lang="te"] {
+  font-family: "Carnatic Preview Telugu","Nirmala UI","Kohinoor Telugu",sans-serif;
+  font-weight: 500;
+}
+.sample-key {
+  margin-top: .55rem;
+}
+.roadmap {
+  max-width: 960px;
+  margin-inline: auto;
+}
+.roadmap .legal-header {
+  padding-bottom: 0;
+}
+.roadmap .legal-header .lede {
+  margin-bottom: 0;
+}
+.section.roadmap-section {
+  padding-block: clamp(2.25rem,5vw,3.5rem);
+}
+.roadmap-section h2 {
+  margin: 0 0 .75rem;
+}
+.release-timeline {
+  list-style: none;
+  margin: 1.5rem 0 0 .45rem;
+  padding: 0 0 0 1.35rem;
+  border-inline-start: 2px solid var(--line);
+}
+.release-timeline li {
+  position: relative;
+}
+.release-timeline li + li {
+  margin-top: 1rem;
+}
+.release-timeline li::before {
+  content: "";
+  position: absolute;
+  inset-inline-start: -1.35rem;
+  top: 1.65rem;
+  width: .65rem;
+  height: .65rem;
+  transform: translateX(-60%);
+  border: 2px solid var(--accent);
+  border-radius: 50%;
+  background: var(--bg);
+}
+.release-entry,.roadmap-card {
+  padding: clamp(1.25rem,3vw,2rem);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: var(--card);
+}
+.release-entry {
+  background: var(--soft);
+}
+.release-entry h3,.release-entry p:last-child {
+  margin: 0;
+}
+.roadmap-grid {
+  display: grid;
+  grid-template-columns: repeat(2,minmax(0,1fr));
+  gap: clamp(1.75rem,4vw,2.75rem);
+}
+.roadmap-card ul {
+  margin: 0;
+  padding-left: 1.2rem;
+  color: var(--muted);
+}
+.roadmap-card li + li {
+  margin-top: .5rem;
 }
 .workflow {
   display: grid;
@@ -239,23 +415,11 @@ figcaption {
 .feature.reverse .feature-media {
   order: 2;
 }
-.feature-media {
-  margin: 0;
-  padding: 2rem;
-  background: var(--soft);
-  border-radius: 24px;
+.feature-media-tablet {
+  width: min(100%, 344px);
 }
-.feature-media .phone {
-  max-width: 240px;
-  margin: auto;
-}
-.feature-media video {
-  height: auto;
-  display: block;
-  width: min(100%,240px);
-  margin: auto;
-  border-radius: 22px;
-  background: #000;
+.feature-media .tablet {
+  border-radius: 20px;
 }
 .feature ul {
   padding-left: 1.2rem;
@@ -427,7 +591,7 @@ details p {
     padding: 1.2rem 0 .8rem;
   }
   .nav-links {
-    gap: .2rem 1.3rem;
+    gap: .2rem clamp(.65rem,3vw,1.3rem);
   }
   .hero {
     grid-template-columns: 1fr;
@@ -438,13 +602,7 @@ details p {
     max-width: 12ch;
   }
   .hero-art {
-    max-width: 430px;
-    width: 100%;
-    margin: auto;
-    padding: 1.75rem;
-  }
-  .hero-art .phone {
-    max-width: 215px;
+    width: min(100%, 225px);
   }
   .motif {
     align-items: flex-start;
@@ -454,7 +612,7 @@ details p {
   .section {
     padding: 3.5rem 0;
   }
-  .workflow,.plans,.feature,.privacy-panel,.legal-layout {
+  .workflow,.plans,.feature,.privacy-panel,.legal-layout,.transliteration-panel,.roadmap-grid {
     grid-template-columns: 1fr;
   }
   .workflow {
@@ -469,9 +627,8 @@ details p {
   .feature+.feature {
     margin-top: 3.5rem;
   }
-  .feature-media .phone,.feature-media video {
-  height: auto;
-    max-width: 220px;
+  .feature-media:not(.feature-media-tablet) {
+    width: min(100%, 230px);
   }
   .privacy-panel {
     gap: 1rem;
@@ -499,6 +656,18 @@ details p {
   }
   .toc li {
     break-inside: avoid;
+  }
+}
+@media(max-width:360px) {
+  .transliteration-panel {
+    padding: .8rem;
+  }
+  .sample-card {
+    padding: .65rem;
+  }
+  .sample-notation td {
+    padding-inline: .125rem;
+    font-size: .9375rem;
   }
 }
 @media(prefers-reduced-motion:reduce) {

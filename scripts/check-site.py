@@ -6,7 +6,7 @@ from pathlib import Path
 from urllib.parse import urlsplit, unquote
 
 ROOT = Path(__file__).resolve().parents[1]
-PAGES = ['index.html', 'privacy.html', 'terms.html']
+PAGES = ['index.html', 'roadmap.html', 'privacy.html', 'terms.html']
 VOID = set('area base br col embed hr img input link meta param source track wbr'.split())
 
 class Page(HTMLParser):
