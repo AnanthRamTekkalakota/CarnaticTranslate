@@ -39,6 +39,9 @@ class Page(HTMLParser):
                     assert not link.startswith('/'), f'{self.name}: root-relative URL {link}'
                     self.refs.append(link)
         if tag not in VOID: self.stack.append(tag)
+    def handle_startendtag(self, tag, attrs):
+        assert tag in VOID, f'{self.name}: self-closing non-void element <{tag}>'
+        self.handle_starttag(tag, attrs)
     def handle_endtag(self, tag):
         assert self.stack and self.stack[-1] == tag, f'{self.name}: unbalanced </{tag}>, {self.stack}'
         self.stack.pop()
