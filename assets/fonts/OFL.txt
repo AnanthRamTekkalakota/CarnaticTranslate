@@ -4,6 +4,15 @@ The subset adds U+0323 using the existing dot outline so the app's combining dot
 
 Copyright 2022 The Noto Project Authors (https://github.com/notofonts/telugu)
 
+Carnatic Preview Kannada and Carnatic Preview Tamil are modified subsets of Noto Sans Kannada
+and Noto Sans Tamil at medium weight and regular width. Each subset adds U+0323
+using the existing period outline to preserve the app’s combining dot below.
+Sources: https://github.com/google/fonts/tree/main/ofl/notosanskannada
+         https://github.com/google/fonts/tree/main/ofl/notosanstamil
+
+Copyright 2022 The Noto Project Authors (https://github.com/notofonts/kannada)
+Copyright 2022 The Noto Project Authors (https://github.com/notofonts/tamil)
+
 This Font Software is licensed under the SIL Open Font License, Version 1.1.
 This license is copied below, and is also available with a FAQ at:
 https://scripts.sil.org/OFL
